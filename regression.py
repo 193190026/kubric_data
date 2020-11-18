@@ -30,7 +30,7 @@ def predict_price(area) -> float:
         den += (prices[i]-mean_areas)**2
         m = num/den
         c = mean_prices - (m*mean_areas)
-        return m,c
+        predicted_prices = m*areas + c
 
 
 if __name__ == "__main__":
