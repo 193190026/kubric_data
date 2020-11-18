@@ -17,7 +17,20 @@ def predict_price(area) -> float:
     """
     response = requests.get(TRAIN_DATA_URL)
     # YOUR IMPLEMENTATION HERE
-    ...
+    mean_areas = np.mean(areas)
+    mean_price = np.mean(prices)
+    
+    n = len(areas)  # total number of values
+    # calculate slope and bias
+    num = 0
+    den =0
+    for i in range(n):
+       
+        num += (areas[i]-mean_areas)*(prices[i]-mean_prices)
+        den += (prices[i]-mean_areas)**2
+        m = num/den
+        c = mean_prices - (m*mean_areas)
+        return m,c
 
 
 if __name__ == "__main__":
